@@ -9,6 +9,9 @@ namespace Session2.common
 {
     public class CacheStorage
     {
+        private DistributedCacheEntryOptions option = new DistributedCacheEntryOptions(){
+            AbsoluteExpiration = DateTimeOffset.UtcNow.AddMinutes(5)
+        };
         private IDistributedCache distributedCache;
         public CacheStorage(IDistributedCache distributedCache)
         {
@@ -18,7 +21,7 @@ namespace Session2.common
         public void Set(String key, Object data)
         {
             String strData = JsonConvert.SerializeObject(data);
-            this.distributedCache.SetString(key, strData);
+            this.distributedCache.SetString(key, strData, option);
         }
 
         public T Get<T>(String key)
