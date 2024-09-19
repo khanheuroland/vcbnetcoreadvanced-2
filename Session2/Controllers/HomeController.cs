@@ -5,21 +5,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Session2.Services;
 
 namespace Session2.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private IHelloService _helloService;
+        private IServiceProvider serviceProvider;
+        private IBankingService myBanking;
+        public HomeController(
+            ILogger<HomeController> logger, 
+            IServiceProvider serviceProvider,
+            VCBBankingService myBanking)
         {
             _logger = logger;
+            this.serviceProvider = serviceProvider;
+            this.myBanking = myBanking;
         }
 
-        public IActionResult Index()
+        public IActionResult Index([FromServices]VIBBankingService bankingService)
         {
-            return View();
+            //myBanking = bankingService;
+            return Content(myBanking.SayHello());
+        }
+
+        public IActionResult Index2()
+        {
+            IMyService myService = MyService.GetInstance();
+            return Content(myService.sayHello());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
