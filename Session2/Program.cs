@@ -7,34 +7,19 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
 
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-app.Use(async(context, next)=> {
-    await context.Response.WriteAsync("<div>Today very hot!!!</div>");
-    await next.Invoke();
-    await context.Response.WriteAsync("<div>Hope that, tomorrow is better!</div>");
-});
+app.UseRouting();
 
-app.Use(async(context, next)=> {
-    await context.Response.WriteAsync("<div>Today is Session 2 of .NET Core</div>");
-    await next.Invoke();
-    await context.Response.WriteAsync("<div>Bye bye, see you tomorrow!</div>");
-});
+app.UseAuthorization();
 
-//Create first middleware 
+app.UseMiddleware<ApiKeyFilterMiddleware>();
 
-
-app.Use(async(context, next)=> {
-    await context.Response.WriteAsync("<div>Today is Session 2 of .NET Core</div>");
-    await next.Invoke();
-    await context.Response.WriteAsync("<div>Bye bye, see you tomorrow!</div>");
-});
-
-//app.UseMiddleware<SimpleMiddleware>();
-app.useSimple();
-
-app.Run(async (context) =>{
-    await context.Response.WriteAsync("<div>Hello VCB, Welcome to IPMac</div>");
-});
+app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
