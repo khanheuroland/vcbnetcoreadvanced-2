@@ -5,6 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+/*
+builder.Services.AddResponseCaching(options=>
+{
+        options.MaximumBodySize =102400;
+});
+*/
+//Add Memcache
+builder.Services.AddMemoryCache();
 
 builder.Services.AddTransient<IHelloService, HelloService>();
 builder.Services.AddSingleton<VCBBankingService, VCBBankingService>();
@@ -18,6 +26,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+//app.UseResponseCaching();
 
 app.UseAuthorization();
 

@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Advanced Net Core\Session2
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/Advanced Net Core/Session2/Views/Caching/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FjaGluZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Advanced Net Core/Session2/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
