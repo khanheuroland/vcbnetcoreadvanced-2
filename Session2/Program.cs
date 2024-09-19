@@ -1,3 +1,6 @@
+using System.Globalization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Options;
 using Session2.common;
 using Session2.common.middlewares;
 using Session2.Services;
@@ -5,7 +8,10 @@ using Session2.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddLocalization(o=>{o.ResourcesPath = "Resources";});
+builder.Services.AddControllersWithViews()
+        .AddViewLocalization()
+        .AddDataAnnotationsLocalization();
 /*
 builder.Services.AddResponseCaching(options=>
 {
@@ -21,6 +27,17 @@ builder.Services.AddDistributedSqlServerCache(options=>{
         options.TableName = "TestCache";
 });
 
+List<CultureInfo> supportedCultures = new List<CultureInfo>(){
+        new CultureInfo("vi-VN"),
+        new CultureInfo("en-GB")
+};
+
+builder.Services.Configure<RequestLocalizationOptions>(option=>{
+        option.SupportedCultures = supportedCultures;
+        option.SupportedUICultures = supportedCultures;
+        option.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(culture:"vi-VN", uiCulture:"vi-VN");
+});
+
 builder.Services.AddTransient<IHelloService, HelloService>();
 builder.Services.AddSingleton<VCBBankingService, VCBBankingService>();
 builder.Services.AddTransient<VIBBankingService, VIBBankingService>();
@@ -28,6 +45,7 @@ builder.Services.AddTransient<CacheStorage>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseRequestLocalization();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

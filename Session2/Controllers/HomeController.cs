@@ -28,7 +28,8 @@ namespace Session2.Controllers
         public IActionResult Index([FromServices]VIBBankingService bankingService)
         {
             //myBanking = bankingService;
-            return Content(myBanking.SayHello());
+            //return Content(myBanking.SayHello());
+            return View();
         }
 
         public IActionResult Index2()

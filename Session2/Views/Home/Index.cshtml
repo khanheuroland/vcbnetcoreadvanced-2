@@ -1,8 +1,12 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Session2.Controllers
+@{
     ViewData["Title"] = "Home Page";
 }
-
+@inject IViewLocalizer localizer;
+@inject IHtmlLocalizer<HomeController> HtmlLocalizer;
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">@HtmlLocalizer["welcome"]</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <p>Current language is: @(Thread.CurrentThread.CurrentUICulture.DisplayName)</p>
+</div>    using Microsoft.AspNetCore.Mvc.Localization;
