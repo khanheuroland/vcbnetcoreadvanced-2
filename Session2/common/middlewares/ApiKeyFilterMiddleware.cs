@@ -26,4 +26,12 @@ namespace Session2.common.middlewares
             }
         }
     }
+
+    public static class ApiKeyFilterMiddlewareExtensions
+    {
+        public static IApplicationBuilder useApiKeyFilter(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<ApiKeyFilterMiddleware>();
+        }
+    }
 }

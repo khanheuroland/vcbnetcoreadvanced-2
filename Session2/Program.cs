@@ -16,7 +16,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.UseMiddleware<ApiKeyFilterMiddleware>();
+app.useApiKeyFilter();
 
 app.MapControllerRoute(
         name: "default",
