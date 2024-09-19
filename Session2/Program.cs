@@ -22,9 +22,7 @@ app.Use(async(context, next)=> {
 });
 
 //Create first middleware 
-app.Run(async (context) =>{
-    await context.Response.WriteAsync("<div>Hello VCB, Welcome to IPMac</div>");
-});
+
 
 app.Use(async(context, next)=> {
     await context.Response.WriteAsync("<div>Today is Session 2 of .NET Core</div>");
@@ -32,7 +30,11 @@ app.Use(async(context, next)=> {
     await context.Response.WriteAsync("<div>Bye bye, see you tomorrow!</div>");
 });
 
-app.UseMiddleware<SimpleMiddleware>();
+//app.UseMiddleware<SimpleMiddleware>();
+app.useSimple();
 
+app.Run(async (context) =>{
+    await context.Response.WriteAsync("<div>Hello VCB, Welcome to IPMac</div>");
+});
 
 app.Run();

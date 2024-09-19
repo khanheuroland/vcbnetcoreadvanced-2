@@ -22,4 +22,12 @@ namespace Session2.common.middlewares
             await context.Response.WriteAsync("<p>We have session #3 tomorrow!</p>");
         }
     }
+
+    public static class useSimpleExtensions
+    {
+        public static IApplicationBuilder useSimple(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<SimpleMiddleware>();
+        }
+    }
 }

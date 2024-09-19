@@ -28,3 +28,4 @@ E:\Advanced Net Core\Session2\obj\Debug\net8.0\refint\Session2.dll
 E:\Advanced Net Core\Session2\obj\Debug\net8.0\Session2.pdb
 E:\Advanced Net Core\Session2\obj\Debug\net8.0\Session2.genruntimeconfig.cache
 E:\Advanced Net Core\Session2\obj\Debug\net8.0\ref\Session2.dll
+E:\Advanced Net Core\Session2\obj\Debug\net8.0\Session2.sourcelink.json
