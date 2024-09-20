@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Session2.Services;
@@ -34,14 +35,24 @@ namespace Session2.Controllers
 
         public IActionResult Index2()
         {
+            return View("Not found");
+            /*
             IMyService myService = MyService.GetInstance();
             return Content(myService.sayHello());
+            */
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View("Error!");
+            
+            var exceptionHandlerFeature =HttpContext.Features.Get<IExceptionHandlerFeature>()!;
+            /*
+            return Problem(
+                    detail: exceptionHandlerFeature.Error.StackTrace,
+                    title: exceptionHandlerFeature.Error.Message);
+            */
+            return View("Error");
         }
     }
 }

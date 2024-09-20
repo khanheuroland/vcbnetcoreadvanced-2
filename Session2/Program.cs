@@ -1,4 +1,5 @@
 using System.Globalization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Options;
 using Session2.common;
@@ -41,10 +42,15 @@ builder.Services.Configure<RequestLocalizationOptions>(option=>{
 builder.Services.AddTransient<IHelloService, HelloService>();
 builder.Services.AddSingleton<VCBBankingService, VCBBankingService>();
 builder.Services.AddTransient<VIBBankingService, VIBBankingService>();
-builder.Services.AddTransient<CacheStorage>();
+//builder.Services.AddTransient<CacheStorage>();
 builder.Services.AddTransient<TranslationHelper>();
 var app = builder.Build();
-
+if (!app.Environment.IsDevelopment())
+{
+        app.UseExceptionHandler("/Home/Error");
+        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+        app.UseHsts();
+}
 // Configure the HTTP request pipeline.
 app.UseRequestLocalization();
 
@@ -53,7 +59,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-//app.UseResponseCaching();
+app.UseExceptionHandler("/Error/Exception");
+app.UseStatusCodePagesWithRedirects("~/Error/{0}");
 
 app.UseAuthorization();
 
@@ -62,6 +69,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 app.Run();
 
