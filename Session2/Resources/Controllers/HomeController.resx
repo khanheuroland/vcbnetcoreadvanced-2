@@ -117,6 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="welcome" xml:space="preserve">
+    <value>Welcome to .NET Core Development</value>
+    <comment/>
+  </data>
+  <data name="learnabout" xml:space="preserve">
+    <value>Learn about</value>
+    <comment/>
+  </data>
+  <data name="buildwebapp" xml:space="preserve">
+    <value>build Web apps with ASP.NET Core.</value>
+    <comment/>
+  </data>
+  <data name="currentlanguage" xml:space="preserve">
+    <value>Current language is</value>
+    <comment/>
+  </data>
   <data name="home" xml:space="preserve">
     <value>Home</value>
     <comment/>

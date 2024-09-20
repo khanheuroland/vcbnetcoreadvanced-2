@@ -118,19 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="welcome" xml:space="preserve">
-    <value>Chào mừng bạn đến với .Net Core</value>
+    <value>Chào mừng bạn đến với ASP.NET Core</value>
     <comment/>
   </data>
   <data name="learnabout" xml:space="preserve">
-    <value>Tìm hiểu nhiều hơn về </value>
+    <value>Tìm hiểu thêm về</value>
     <comment/>
   </data>
-  <data name="buildingwebapps" xml:space="preserve">
-    <value>Xây dựng ứng dụng web với ASP.NET Core tại đây</value>
+  <data name="buildwebapp" xml:space="preserve">
+    <value>xây dựng ứng dụng Web với ASP.NET Core tại đây.</value>
     <comment/>
   </data>
   <data name="currentlanguage" xml:space="preserve">
-    <value>Bạn đang xem ở ngôn ngữ</value>
+    <value>Ngôn ngữ hiện tại</value>
+    <comment/>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Trang Chủ</value>
+    <comment/>
+  </data>
+  <data name="privacy" xml:space="preserve">
+    <value>Chính sách riêng tư</value>
     <comment/>
   </data>
 </root>
