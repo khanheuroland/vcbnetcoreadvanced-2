@@ -5,8 +5,9 @@
 }
 @inject IViewLocalizer localizer;
 @inject IHtmlLocalizer<HomeController> HtmlLocalizer;
+
 <div class="text-center">
-    <h1 class="display-4">@HtmlLocalizer["welcome"]</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>Current language is: @(Thread.CurrentThread.CurrentUICulture.DisplayName)</p>
-</div>    using Microsoft.AspNetCore.Mvc.Localization;
+    <h1 class="display-4">@localizer["welcome"]</h1>
+    <p>@localizer["learnabout"] <a href="https://learn.microsoft.com/aspnet/core">@localizer["buildingwebapps"]</a>.</p>
+    <p>@localizer["currentlanguage"]: @(Thread.CurrentThread.CurrentUICulture.DisplayName)</p>
+</div>
