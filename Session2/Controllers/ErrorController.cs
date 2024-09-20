@@ -29,5 +29,11 @@ namespace Session2.Controllers
         {
             return View("Error404");
         }
+
+        [HttpGet("500")]
+        public IActionResult Error500()
+        {
+            return View("Error500");
+        }
     }
 }

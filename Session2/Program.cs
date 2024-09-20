@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Options;
 using Session2.common;
+using Session2.common.filters;
 using Session2.common.middlewares;
 using Session2.Services;
 
@@ -10,7 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddLocalization(o=>{o.ResourcesPath = "Resources";});
-builder.Services.AddControllersWithViews()
+builder.Services.AddControllersWithViews(options=>{
+        options.Filters.Add(new CustomExceptionFilter());
+        }
+)
         .AddViewLocalization()
         .AddDataAnnotationsLocalization();
 /*
@@ -43,6 +47,10 @@ builder.Services.AddTransient<IHelloService, HelloService>();
 builder.Services.AddSingleton<VCBBankingService, VCBBankingService>();
 builder.Services.AddTransient<VIBBankingService, VIBBankingService>();
 //builder.Services.AddTransient<CacheStorage>();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+builder.Services.AddProblemDetails();
+
 builder.Services.AddTransient<TranslationHelper>();
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
@@ -59,11 +67,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseExceptionHandler("/Error/Exception");
-app.UseStatusCodePagesWithRedirects("~/Error/{0}");
-
 app.UseAuthorization();
 
+app.UseExceptionHandler();
 //app.useApiKeyFilter();
 
 app.MapControllerRoute(
