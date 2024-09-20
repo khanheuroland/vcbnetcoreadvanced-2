@@ -42,6 +42,7 @@ builder.Services.AddTransient<IHelloService, HelloService>();
 builder.Services.AddSingleton<VCBBankingService, VCBBankingService>();
 builder.Services.AddTransient<VIBBankingService, VIBBankingService>();
 builder.Services.AddTransient<CacheStorage>();
+builder.Services.AddTransient<TranslationHelper>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -63,3 +64,5 @@ app.MapControllerRoute(
         pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+

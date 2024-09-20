@@ -1,0 +1,8 @@
+[
+    {"key": "home", "Translate": "Home"},
+    {"key": "privacy", "Translate": "Privacy"},
+    {"key": "welcome", "Translate": "Welcome to .NET Core From VCB"},
+    {"key": "learn_more", "Translate": "Lear more about"},
+    {"key": "build_web_app", "Translate": "build Web apps with ASP.NET Core"},
+    {"key": "current_language", "Translate": "Current language is"}
+]

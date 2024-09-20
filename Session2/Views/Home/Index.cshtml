@@ -1,12 +1,14 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using Session2.Controllers
+@using Session2.common;
 @{
     ViewData["Title"] = "Home Page";
+
 }
-@inject IHtmlLocalizer<HomeController> HtmlLocalizer;
+@inject TranslationHelper translation;
 
 <div class="text-center">
-    <h1 class="display-4">@HtmlLocalizer["welcome"]</h1>
-    <p>@HtmlLocalizer["learnabout"] <a href="https://learn.microsoft.com/aspnet/core">@HtmlLocalizer["buildwebapp"]</a>.</p>
-    <p>@HtmlLocalizer["currentlanguage"]: @(Thread.CurrentThread.CurrentUICulture.DisplayName)</p>
+    <h1 class="display-4">@translation.getTranslate("welcome")</h1>
+    <p>@translation.getTranslate("learn_more") <a href="https://learn.microsoft.com/aspnet/core">@translation.getTranslate("build_web_app")</a>.</p>
+    <p>@translation.getTranslate("current_language"): @(Thread.CurrentThread.CurrentCulture.Name)</p>
 </div>

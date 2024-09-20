@@ -1,0 +1,8 @@
+[
+    {"key": "home", "Translate": "Trang chủ"},
+    {"key": "privacy", "Translate": "Chính sách riêng tư"},
+    {"key": "welcome", "Translate": "Chào mừng bạn đến với lớp học"},
+    {"key": "learn_more", "Translate": "Tìm hiểu về"},
+    {"key": "build_web_app", "Translate": "xây dựng ứng dụng web với ASP.NET Core"},
+    {"key": "current_language", "Translate": "Ngôn ngữ hiện tại là"}
+]
