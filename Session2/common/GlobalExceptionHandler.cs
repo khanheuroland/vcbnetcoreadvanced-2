@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Session2.Services;
 
 namespace Session2.common
 {
@@ -12,6 +13,9 @@ namespace Session2.common
     {
         public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
         {
+            //Get Service
+            IHelloService helloService = httpContext.RequestServices.GetService<IHelloService>();
+
             if(httpContext.Response.StatusCode == 500)
             {
                 var problemDetail = new ProblemDetails(){
